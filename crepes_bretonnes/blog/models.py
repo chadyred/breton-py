@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 # Create your models here.
 class Article(models.Model):
@@ -47,3 +49,17 @@ class UserTagArticle(models.Model):
 
     def __str__(self):
         return "{0} à tagger : {1} sur l'article {2}".format(self.user, self.tag, self.article)
+
+class Commentaire(models.Model):
+    """Commentaire d'article"""
+
+    titre = models.CharField(max_length=100, null=False)
+    contenu = models.TextField(null=False)
+
+    user = models.ForeignKey(User)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type','object_id')
+
+    def __str__(self):
+        return "Commentaire {} sur l'article {} de {}".format(self.titre, self.article, self.user)
