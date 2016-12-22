@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+	Lecture - {{ article.titre }}
+{% endblock title %}
+
+{% block content %}
+	
+    <h1>{{ article.titre|linebreaks }}</h1>
+    <p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"DATE_FORMAT" }} - Nombre de vue :{{ article.nbVue }}</p>
+	<div class="contenu">{{ article.contenu|linebreaks }}</div>
+{% endblock content %}

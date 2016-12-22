@@ -1,0 +1,8 @@
+{% if ajoute %}
+    Article créé !
+{% endif %}
+<form action="{% url 'article_create_from_model' %}" method="POST" enctype="multipart/form-data" >
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Submit" />
+</form>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+	{% for article in liste_articles %}
+		{{ article.id }}<br/><br/>
+		{{ article.contenu }} <br/>
+		{{ article.date }}<br/>
+		{{ article.image }}<br/>
+         Action:   <a href="{% url "article_show_view" pk=article.id %}"> Voir avec la ViewDetail  </a><br/>
+		<hr>
+	{% endfor %}
+
+	 <p>
+       <ul>
+            {% for categorie in categories %}
+                    <li>
+                        <a href="{% url "article_by_categorie" id=categorie.id %}">
+                            {{ categorie.label|truncatewords:5 }}
+                        </a>
+                    </li>
+            {% empty %}
+                Pas d'categorie !
+            {% endfor %}
+        </ul>
+    </p>
+
+	{% include "blog/pagination.html" %}
+{% endblock content %}
