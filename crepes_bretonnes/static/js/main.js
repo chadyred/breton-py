@@ -1,4 +1,4 @@
-
+// Permet de récupérer un seul élément par son id
 function $(element) {
  return document.getElementById(element)
 }
@@ -11,4 +11,3 @@ function test() {
   alert($H('test'))
 }
 
-test()

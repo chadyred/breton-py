@@ -1,3 +1,7 @@
+{% extends "blog/base_blog.html" %}
+{% block content %}
+
+
 {% if editer %}
     Article editer !
 {% endif %}
@@ -7,3 +11,14 @@
     {% csrf_token %}
     <input type="submit" value="Submit" />
 </form>
+
+<div id="html">
+  <span id="test" data-id-article="{{ id }}" contenteditable="true">
+    <p>
+      <b>qsdqsd</b>
+      <br/>
+        Mon super contenu
+      </p>
+  </span>
+</div>
+{% endblock content %}

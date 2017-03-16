@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from .models import Article, Categorie
 from .forms import ArticleForm, ArticleModelForm
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.urlresolvers import reverse_lazy
-
 
 def home(request):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
@@ -24,6 +23,20 @@ def article(request, id):
     article = Article.objects.get(id=id)
 
     return render(request, 'blog/article.html', {"article" : article})
+
+
+def editArticleJson(request, id):
+    """Fonction qui va permettre de mettre un jour une instance d'article"""
+
+    form = createEditArticleForm(request, id)
+    print(form)
+    # contenu = request.POST.get("contenu")
+    editer = False
+    if form.is_valid():
+        form.save()
+        editer = True
+
+    return JsonResponse({"resultat":editer})
 
 
 def createArticle(request):
@@ -68,11 +81,19 @@ def createArticleFromModel(request):
 
     return render(request, 'blog/article_create_from_model.html', locals())
 
-def editArticle(request, id):
-    """Fonction qui va permettre de mettre un jour une instance d'article"""
+def createEditArticleForm(request, id):
     article = Article.objects.get(id=id)
 
+
     form = ArticleModelForm(request.POST or None, instance=article)
+
+    return form
+
+
+def editArticle(request, id):
+    """Fonction qui va permettre de mettre un jour une instance d'article"""
+    form = createEditArticleForm(request, id)
+
     editer = False
 
     if form.is_valid():

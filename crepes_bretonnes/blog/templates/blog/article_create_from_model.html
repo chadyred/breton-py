@@ -1,3 +1,6 @@
+{% extends "blog/base_blog.html" %}
+{% block content %}
+
 {% if ajoute %}
     Article créé !
 {% endif %}
@@ -6,3 +9,4 @@
     {% csrf_token %}
     <input type="submit" value="Submit" />
 </form>
+{% endblock content %}
