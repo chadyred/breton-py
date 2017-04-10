@@ -50,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'blog.middleware.CompteurMiddleware',
 )
 
 ROOT_URLCONF = 'crepes_bretonnes.urls'

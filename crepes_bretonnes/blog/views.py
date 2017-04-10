@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article, Categorie
 from .forms import ArticleForm, ArticleModelForm
 from django.views.generic import ListView, DetailView, CreateView
@@ -32,12 +32,17 @@ def editArticleJson(request, id):
     print(form)
     # contenu = request.POST.get("contenu")
     editer = False
-    if form.is_valid():
-        form.save()
-        editer = True
+    contenu = request.POST.get('contenu')
+
+    print(contenu)
+    if request.method == 'POST':
+#         #POST goes here . is_ajax is must to capture ajax requests. Beginner's pit.
+        if request.is_ajax():
+            if form.is_valid():
+                form.save()
+                editer = True
 
     return JsonResponse({"resultat":editer})
-
 
 def createArticle(request):
     """FOnction qui permet de créé un article"""
@@ -119,6 +124,13 @@ class ArticleListView(ListView):
 
         return context
 
+def deleteArticle(request, id):
+    """FOnction qui permet de supprimer un article"""
+    article = Article.objects.get(id=id)
+
+    article.delete()
+
+    return redirect("articles_list")
 
 class ArticleByCategorieListView(ArticleListView):
     """Vue susvisé : blog/article_list.html, objet container : object_list"""

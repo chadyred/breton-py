@@ -2,5 +2,42 @@
 {% block content %}
     <h1>Bienvenue sur mon blog !</h1>
     <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>
+    <p> Vous vous situé actuellement : <span class="location"></span></p>
+    {% load static %}
+    <audio  controls="controls" id="audioReader">
+      <source  src="{% static 'musique/Developers.ogg' %}">
+      <source  src="{% static 'musique/Developers.mp3' %}">
+    </audio>
+    <div id="controls">
+      <a href="#" id="start">Start</a>
+      <a href="#" id="pause">Pause</a>
+      <a href="#" id="stop">Stop</a>
+      <p>
+        <button class="btn-vol btn-volume-1" value="0.2">1</button>
+        <button class="btn-vol btn-volume-2" value="0.4">2</button>
+        <button class="btn-vol btn-volume-3" value="0.6">3</button>
+        <button class="btn-vol btn-volume-4" value="0.8">4</button>
+        <button class="btn-vol btn-volume-5" value="1.0">5</button>
+      </p>
+      <div>
+          <div id="progressBarControl">
+              <div id="progressBar">Pas de lecture</div>
+          </div>
+          <div id="progressTime">0:00</div>
+      </div>
+      <div>
+        <p>
+          {% load blog_extras %}
 
+          {{ 'Bienvenue à toi!'|citation }} dit-il..., nous sommes le {{ date_actuelle }}
+        </p>
+      </div>
+      {% with test=12 %}
+        {% load blog_fifo %}
+        {% fifo 1 test %}
+      {% endwith %}
+      {% load blog_random %}
+
+      {% random 1 5%}
+    </div>
 {% endblock %}

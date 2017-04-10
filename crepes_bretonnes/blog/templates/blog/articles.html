@@ -10,8 +10,9 @@
             {% for article in articles %}
                     <li>
                        <a href="{% url "article_show" id=article.id %}"> {{ article.titre|smart_truncate:13 }}  </a>
-                      -  <a href="{% url "article_edit" id=article.id %}"> Editer </a> -
-                       <a href="{% url "article_show_view" pk=article.id %}"> Voir avec la ViewDetail  </a>
+                      - <a href="{% url "article_edit" id=article.id %}"> Editer </a> -
+                      - <a href="{% url "article_show_view" pk=article.id %}"> Voir avec la ViewDetail  </a>
+                      - <a href="{% url "article_delete" id=article.id %}"> Supprimer l'article  </a>
 
                     </li>
             {% empty %}

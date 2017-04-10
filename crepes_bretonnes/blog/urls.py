@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^article/create-from-views$', views.CreateArticleView.as_view(), name="article_create_from_views"),
     url(r'^article/edit/(?P<id>\d+)/json$', views.editArticleJson, name="article_edit_json"),
     url(r'^article/edit/(?P<id>\d+)$', views.editArticle, name="article_edit"),
-    url(r'^article/(?P<pk>\d+)/show/$', views.ArticleDetailView.as_view(), name="article_show_view")
+    url(r'^article/(?P<pk>\d+)/show/$', views.ArticleDetailView.as_view(), name="article_show_view"),
+    url(r'^article/(?P<id>\d+)/delete/$', views.deleteArticle, name="article_delete")
 ]

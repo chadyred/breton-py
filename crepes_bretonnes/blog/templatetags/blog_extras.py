@@ -1,7 +1,10 @@
- # -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django import template
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
+
 
 # Instance permettant d'enregistrer nos filtres
 register = template.Library()
@@ -19,7 +22,7 @@ def smart_truncate(texte, nbCaractere):
 	try:
 		nbCaractere = int(nbCaractere)
 	except ValueError:
-		return texte 
+		return texte
 
 	if nbCaractere >= len(texte):
 		return texte
