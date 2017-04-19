@@ -7,10 +7,13 @@ class CompteurMiddleware(object):
 
         try:
             page = Page.objects.get(url=request.path)
-            page.nb_visit = F("nb_visit") + 1
+            page.nb_visit = F('nb_visit') + 1
             page.save()
         except Page.DoesNotExist:
             page = Page.objects.create(url=request.path)
+
+        # Reload it after request complet, without it nothing change
+        page.refresh_from_db()
 
         response.content += "Page vue {0} fois".format(str(page.nb_visit))
 
