@@ -8,6 +8,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelatio
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver, Signal # decorateur : permet de modifier la fonction
 
+from django.contrib.auth.models import User as UserAuthModel
+
 crepe_finie = Signal(providing_args=["nom", "adresse"]) #"crepeingredient"])
 
 
@@ -139,3 +141,13 @@ class Page(models.Model):
 
     def __str__(self, page):
         return self.url;
+
+class Profile(models.Model):
+    user = models.OneToOneField(UserAuthModel)
+    site_web = models.URLField(blank=True)
+    avatar = models.ImageField(null=False, blank=True, upload_to="avatars/")
+    signature = models.TextField(blank=True)
+    inscrit_newsletter = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "Profile de {}".format(self.user)
