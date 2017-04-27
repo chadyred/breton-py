@@ -10,10 +10,10 @@ urlpatterns = [
     # url(r'^$', 'crepes_bretonnes.views.home', name='home'),
     url(r'^$', TemplateView.as_view(template_name='blog/accueil.html')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^oauth/', include('oauth.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^newletter$', TemplateView.as_view(template_name='blog/staticView.html'))
+    url(r'^newletter$', TemplateView.as_view(template_name='blog/staticView.html')),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
