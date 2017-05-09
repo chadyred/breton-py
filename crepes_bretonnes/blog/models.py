@@ -2,13 +2,13 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from oauth.models import User
+
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver, Signal # decorateur : permet de modifier la fonction
-
-from django.contrib.auth.models import User as UserAuthModel
 
 crepe_finie = Signal(providing_args=["nom", "adresse"]) #"crepeingredient"])
 
@@ -55,7 +55,7 @@ class Article(models.Model):
     nbVue = models.IntegerField(default=0)
 
     categorie = models.ForeignKey('Categorie')
-    auteur = models.ForeignKey('User')
+    auteur = models.ForeignKey(User)
 
     def __str__(self):
         """
@@ -93,15 +93,6 @@ class Categorie(models.Model):
 
     def __str__(self):
         return self.label
-
-class User(models.Model):
-    username = models.TextField(max_length=255)
-    # On fera eniteArticle.user_tag afin d'avoir les utilisateur qui ont taggé cette article
-    articlesTag = models.ManyToManyField(Article, through="UserTagArticle", related_name="user_tag")
-
-
-    def __str__(self):
-        return self.username
 
 class Tag(models.Model):
     libelle = models.TextField(max_length=100)
@@ -141,13 +132,3 @@ class Page(models.Model):
 
     def __str__(self, page):
         return self.url;
-
-class Profile(models.Model):
-    user = models.OneToOneField(UserAuthModel)
-    site_web = models.URLField(blank=True)
-    avatar = models.ImageField(null=False, blank=True, upload_to="avatars/")
-    signature = models.TextField(blank=True)
-    inscrit_newsletter = models.BooleanField(default=False)
-
-    def __str__(self):
-        return "Profile de {}".format(self.user)

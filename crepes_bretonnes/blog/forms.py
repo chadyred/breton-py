@@ -1,5 +1,6 @@
 from django import forms
-from .models import Categorie, User, Article
+from .models import Categorie, Article
+from oauth.models import User
 
 class ArticleForm(forms.Form):
     titre = forms.CharField(max_length=100)
