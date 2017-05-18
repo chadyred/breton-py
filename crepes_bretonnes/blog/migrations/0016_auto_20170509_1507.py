@@ -24,17 +24,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='auteur',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='User'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='oauth.Profile'),
         ),
         migrations.AlterField(
             model_name='commentaire',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='User'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='oauth.Profile'),
         ),
         migrations.AlterField(
             model_name='usertagarticle',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='User'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='oauth.Profile'),
         ),
         migrations.DeleteModel(
             name='Profile',

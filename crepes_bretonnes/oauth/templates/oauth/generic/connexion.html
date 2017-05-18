@@ -1,5 +1,4 @@
-<!-- /oauth/templates/oauth/login.html -->
-<h1>Se connecter</h1>
+<h1>Se connecter (vue généric)</h1>
 
 {% if error %}
 <p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
@@ -8,7 +7,7 @@
 {% if user.is_authenticated %}
 Vous êtes connecté, {{ user.username }} ! {% include 'oauth/logout.html' %}
 {% else %}
-<form method="post" action=".">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Se connecter" />

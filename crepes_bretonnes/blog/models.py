@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from oauth.models import User
+from oauth.models import Profile
 
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
@@ -55,7 +55,7 @@ class Article(models.Model):
     nbVue = models.IntegerField(default=0)
 
     categorie = models.ForeignKey('Categorie')
-    auteur = models.ForeignKey(User)
+    auteur = models.ForeignKey(Profile)
 
     def __str__(self):
         """
@@ -102,7 +102,7 @@ class Tag(models.Model):
         return "#" + self.libelle
 
 class UserTagArticle(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Profile)
     tag = models.ForeignKey(Tag)
     article = models.ForeignKey(Article)
 
@@ -115,7 +115,7 @@ class Commentaire(models.Model):
     titre = models.CharField(max_length=100, null=False)
     contenu = models.TextField(null=False)
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Profile)
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type','object_id')

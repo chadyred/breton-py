@@ -5,6 +5,7 @@ from .models import Article, Categorie
 from .forms import ArticleForm, ArticleModelForm
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
@@ -13,6 +14,12 @@ def home(request):
 
     return HttpResponse(text)
 
+def accueil(request):
+    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
+    text = """<h1>Bienvenue sur mon blog !</h1>
+              <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>"""
+
+    return render(request, 'blog/accueil.html', locals())
 
 def articles(request):
     articles = Article.objects.all()
@@ -21,7 +28,6 @@ def articles(request):
 
 def article(request, id):
     article = Article.objects.get(id=id)
-
     return render(request, 'blog/article.html', {"article" : article})
 
 
@@ -44,6 +50,7 @@ def editArticleJson(request, id):
 
     return JsonResponse({"resultat":editer})
 
+@login_required(redirect_field_name="next-goto")
 def createArticle(request):
     """FOnction qui permet de créé un article"""
 
