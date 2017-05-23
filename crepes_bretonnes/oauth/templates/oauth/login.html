@@ -6,7 +6,12 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-Vous êtes connecté, {{ user.username }} ! {% include 'oauth/logout.html' %}
+
+	{% load cache %}
+	{% cache 500 user.username %}
+	Vous êtes connecté, {{ user.username }} ! {% include 'oauth/logout.html' %}
+	{% endcache %}
+
 {% else %}
 <form method="post" action=".">
     {% csrf_token %}
