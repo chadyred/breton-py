@@ -75,6 +75,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crepes_bretonnes.wsgi.application'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp/django_cache',
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -116,3 +122,4 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = '/oauth/login'
 LOGIN_REDIRECT_URL = '/blog/articles' # for generic login view after success
+MESSAGE_LEVEL = 10 # Debug

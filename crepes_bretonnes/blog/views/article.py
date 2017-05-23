@@ -1,34 +1,27 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
-from .models import Article, Categorie
-from .forms import ArticleForm, ArticleModelForm
+from blog.models import Article, Categorie, Commentaire
+from blog.forms import ArticleForm, ArticleModelForm, CommentaireForm
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
-
-def home(request):
-    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
-    text = """<h1>Bienvenue sur mon blog !</h1>
-              <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>"""
-
-    return HttpResponse(text)
-
-def accueil(request):
-    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
-    text = """<h1>Bienvenue sur mon blog !</h1>
-              <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>"""
-
-    return render(request, 'blog/accueil.html', locals())
+from django.contrib.auth.decorators import permission_required
+from django.views.decorators.cache import cache_page
 
 def articles(request):
     articles = Article.objects.all()
 
     return render(request, 'blog/articles.html', {"articles" : articles})
 
+@cache_page(60*15)
 def article(request, id):
+    """Voir un article"""
     article = Article.objects.get(id=id)
-    return render(request, 'blog/article.html', {"article" : article})
+    form = CommentaireForm()
+    commentaires = article.commentaires.all()
+
+    return render(request, 'blog/article.html', locals())
 
 
 def editArticleJson(request, id):
@@ -51,9 +44,9 @@ def editArticleJson(request, id):
     return JsonResponse({"resultat":editer})
 
 @login_required(redirect_field_name="next-goto")
+@permission_required('blog.add_article')
 def createArticle(request):
     """FOnction qui permet de créé un article"""
-
     form = ArticleForm(request.POST or None, request.FILES)
 
     ajoute = False

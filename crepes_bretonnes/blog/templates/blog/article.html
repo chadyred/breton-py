@@ -1,6 +1,26 @@
 {% extends "blog/base_blog.html" %}
 {% block title %}Ma page d'accueil{% endblock %}
 {% block content %}
-    {{ article.titre|linebreaks }}
-    <img src="{{ article.image.url }}"/>
+
+<p id="titre-article">
+	{{ article.titre|linebreaks }}
+</p>
+<p id="article-contenu">
+	{{ article.contenu|linebreaks }}
+</p>
+<img src="{{ article.image.url }}"/>
+
+{% if perms.blog.article_add_comment %}
+	{% include 'blog/add_comment.html' %}
+{% else %}
+	Vous n'avez pas les droits de commenter l'article.
+{% endif %}
+
+<div id="commantaires">
+	{% for comment in commentaires %}
+		{{ comment.id }}
+	{% empty %}
+		Pas de commentaire pour cette article !
+	{% endfor %}
+</div>
 {% endblock content %}

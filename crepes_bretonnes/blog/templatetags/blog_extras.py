@@ -5,7 +5,6 @@ from django import template
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
-
 # Instance permettant d'enregistrer nos filtres
 register = template.Library()
 

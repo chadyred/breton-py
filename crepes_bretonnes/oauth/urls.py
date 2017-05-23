@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
-from django.views.generic import ListView
 
 # On import les vues de Django, avec un nom spécifique
 from django.contrib.auth import views as auth_views

@@ -51,18 +51,23 @@ class Article(models.Model):
     titre = models.CharField(max_length=100)
     contenu = models.TextField(null=False)
     date = models.DateTimeField( auto_now=True, auto_now_add=False, verbose_name="Date de parution")
-    image = models.ImageField(upload_to="article/")
+    image = models.ImageField(upload_to="article/", null=True)
     nbVue = models.IntegerField(default=0)
 
     categorie = models.ForeignKey('Categorie')
     auteur = models.ForeignKey(Profile)
+    commentaires = GenericRelation('blog.Commentaire')
 
     def __str__(self):
         """
         Article de notre super blog !! intitulé
         """
         return self.titre
-
+    class Meta:
+        permissions = (
+                ("article_add_comment","Commenter un article"),
+                ("article_add_like","Like un article")
+            )
 
 @receiver(post_delete, sender=Article)
 def post_delete_article(sender, instance, **kwargs):
@@ -110,7 +115,7 @@ class UserTagArticle(models.Model):
         return "{0} à tagger : {1} sur l'article {2}".format(self.user, self.tag, self.article)
 
 class Commentaire(models.Model):
-    """Commentaire d'article"""
+    """Commentaire généric (pouvant être associé à plusieurs modèle)"""
 
     titre = models.CharField(max_length=100, null=False)
     contenu = models.TextField(null=False)
@@ -119,9 +124,6 @@ class Commentaire(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type','object_id')
-
-
-    article = models.ForeignKey('Article')
 
     def __str__(self):
         return "Commentaire {} sur l'article {} de {}".format(self.titre, self.article, self.user)
