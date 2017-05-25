@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-25 08:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: blog/models.py:55
+msgid "Date de parution"
+msgstr "Publish date"
+
+#: blog/models.py:69
+msgid "Article"
+msgstr "Article"
+
+#: blog/models.py:70
+msgid "Articles"
+msgstr "Articles"
+
+#: blog/templates/app/language.html:5
+msgid "Bonjour les nouveaux !"
+msgstr "Hello newbies !"
+
+#. Translators: cat behaviour
+#: blog/views/app.py:24
+msgid "drole"
+msgstr "smile"
+
+#: blog/views/app.py:26
+#, python-format
+msgid "Ton magnifique chien s'appel %(nom_chien)s."
+msgstr "Your beautiful dog name is %(nom_chien)s."
+
+#: blog/views/app.py:27
+msgid "Monde"
+msgstr "World"
+
+#: blog/views/app.py:28
+#, python-format
+msgid "Votre ip est %(ip)s"
+msgstr "You ip is %(ip)s"
+
+#: blog/views/app.py:29
+msgid "Je suis tout petit."
+msgstr "I'm very small"
+
+#: blog/views/app.py:32
+#, python-format
+msgid "Vous avez %(nb_chat)s chat %(caracter)s"
+msgid_plural "Vous avez %(nb_chat)s chats %(caracter)ss"
+msgstr[0] "You have %(nb_chat)s cat %(caracter)s"
+msgstr[1] "You have %(nb_chat)s cats %(caracter)ss"
+
+#: blog/views/app.py:35
+msgctxt "Crocodile de compagnie dans la famille pirate"
+msgid "sac-à-main"
+msgstr "handbag"
+
+#: blog/views/app.py:36
+msgctxt "Sac pour transporter des affaires"
+msgid "sac-à-main"
+msgstr "handbag"
+
+#: blog/views/app.py:38
+msgid "Viens %(animal)s, mais avant %s(suj) doit prendre mon %(objet)s"
+msgstr "Come %(animal)s, before I have to take my %(objet)s"
+
+#: blog/views/app.py:40
+msgid "je"
+msgstr "I"
+
+#: crepes_bretonnes/settings.py:113
+msgid "French"
+msgstr "Français"
+
+#: crepes_bretonnes/settings.py:114
+msgid "German"
+msgstr "Allemand"
+
+#: crepes_bretonnes/settings.py:115
+msgid "English"
+msgstr "Anglais"
