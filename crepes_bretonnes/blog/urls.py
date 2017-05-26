@@ -6,10 +6,6 @@ from django.views.generic import ListView
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
-    # Examples:
-    # url(r'^$', 'crepes_bretonnes.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^accueil$', views.home, name="accueil"),
     url(r'^articles$', views.articles, name="articles_list"),
     url(r'^articles/(?P<id>\d+)/categorie/$', views.ArticleByCategorieListView.as_view(), name="article_by_categorie"),
@@ -22,5 +18,6 @@ urlpatterns = [
     url(r'^article/edit/(?P<id>\d+)$', views.editArticle, name="article_edit"),
     url(r'^article/(?P<pk>\d+)/show/$', views.ArticleDetailView.as_view(), name="article_show_view"),
     url(r'^article/(?P<id>\d+)/delete/$', views.deleteArticle, name="article_delete"),
-    url(r'^commentaire/article/(?P<id>\d+)/ajouter/$', views.comment_article, name="comment_article")
+    url(r'^commentaire/article/(?P<id>\d+)/ajouter/$', views.comment_article, name="comment_article"),
+    url(r'^test-i18n$', views.test_i18n, name="test_i18n")
 ]

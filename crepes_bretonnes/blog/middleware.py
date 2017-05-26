@@ -1,5 +1,5 @@
 from django.db.models import F
-from models import Page
+from .models import Page
 
 class CompteurMiddleware(object):
 
@@ -15,6 +15,6 @@ class CompteurMiddleware(object):
         # Reload it after request complet, without it nothing change
         page.refresh_from_db()
 
-        response.content += "Page vue {0} fois".format(str(page.nb_visit))
+        response.content += str.encode("Page vue {0} fois".format(page.nb_visit))
 
         return response

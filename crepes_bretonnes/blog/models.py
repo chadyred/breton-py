@@ -10,6 +10,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelatio
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver, Signal # decorateur : permet de modifier la fonction
 
+from django.utils.translation import ugettext_lazy as _
+
 crepe_finie = Signal(providing_args=["nom", "adresse"]) #"crepeingredient"])
 
 
@@ -50,7 +52,7 @@ def livre(instance, **kwargs):
 class Article(models.Model):
     titre = models.CharField(max_length=100)
     contenu = models.TextField(null=False)
-    date = models.DateTimeField( auto_now=True, auto_now_add=False, verbose_name="Date de parution")
+    date = models.DateTimeField( auto_now=True, auto_now_add=False, verbose_name=_("Date de parution") )
     image = models.ImageField(upload_to="article/", null=True)
     nbVue = models.IntegerField(default=0)
 
@@ -64,6 +66,8 @@ class Article(models.Model):
         """
         return self.titre
     class Meta:
+        verbose_name = _("Article")
+        verbose_name_plural = _("Articles")
         permissions = (
                 ("article_add_comment","Commenter un article"),
                 ("article_add_like","Like un article")

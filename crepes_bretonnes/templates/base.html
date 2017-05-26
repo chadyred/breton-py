@@ -13,13 +13,7 @@
   <header>Crêpes bretonnes</header>
       <nav>
          {% block nav %}
-         <ul>
-              <li><a href="{% url "accueil" %}">Accueil</a></li>
-              <li><a href="{% url "articles_list" %}">Les articles</a></li>
-              <li><a href="{% url "articles_list_view" %}">Les articles avec un ListView</a></li>
-              <li><a href="{% url "article_create" %}">Ajouter un article</a></li>
-              <li><a href="{% url "article_create_from_model" %}">Ajouter un article avec un ModelForm</a></li>
-         </ul>
+            {% include "menu.html" %}
          {% endblock %}
      </nav>
      <section id="content">
