@@ -11,6 +11,8 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver, Signal # decorateur : permet de modifier la fonction
 
 from django.utils.translation import ugettext_lazy as _
+from datetime import datetime
+
 
 crepe_finie = Signal(providing_args=["nom", "adresse"]) #"crepeingredient"])
 
@@ -59,6 +61,12 @@ class Article(models.Model):
     categorie = models.ForeignKey('Categorie')
     auteur = models.ForeignKey(Profile)
     commentaires = GenericRelation('blog.Commentaire')
+
+    def is_recent(self):
+        """Les 30 day"""
+        dateDiff = datetime.now() - self.date #create a timedelta
+
+        return dateDiff.days < 30
 
     def __str__(self):
         """

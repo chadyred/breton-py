@@ -1,4 +1,4 @@
-#!/media/www-dev/private/perso/django/bin/python3
+#!/media/www-dev/private/test/python/django-application/breton-py/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
