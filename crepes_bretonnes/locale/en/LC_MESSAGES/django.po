@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-25 08:44+0000\n"
+"POT-Creation-Date: 2017-05-25 18:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,50 +34,50 @@ msgid "Bonjour les nouveaux !"
 msgstr "Hello newbies !"
 
 #. Translators: cat behaviour
-#: blog/views/app.py:24
+#: blog/views/app.py:32
 msgid "drole"
 msgstr "smile"
 
-#: blog/views/app.py:26
+#: blog/views/app.py:34
 #, python-format
 msgid "Ton magnifique chien s'appel %(nom_chien)s."
 msgstr "Your beautiful dog name is %(nom_chien)s."
 
-#: blog/views/app.py:27
+#: blog/views/app.py:35
 msgid "Monde"
 msgstr "World"
 
-#: blog/views/app.py:28
+#: blog/views/app.py:36
 #, python-format
 msgid "Votre ip est %(ip)s"
 msgstr "You ip is %(ip)s"
 
-#: blog/views/app.py:29
+#: blog/views/app.py:37
 msgid "Je suis tout petit."
 msgstr "I'm very small"
 
-#: blog/views/app.py:32
+#: blog/views/app.py:40
 #, python-format
 msgid "Vous avez %(nb_chat)s chat %(caracter)s"
 msgid_plural "Vous avez %(nb_chat)s chats %(caracter)ss"
 msgstr[0] "You have %(nb_chat)s cat %(caracter)s"
 msgstr[1] "You have %(nb_chat)s cats %(caracter)ss"
 
-#: blog/views/app.py:35
+#: blog/views/app.py:43
 msgctxt "Crocodile de compagnie dans la famille pirate"
 msgid "sac-à-main"
 msgstr "handbag"
 
-#: blog/views/app.py:36
+#: blog/views/app.py:44
 msgctxt "Sac pour transporter des affaires"
 msgid "sac-à-main"
 msgstr "handbag"
 
-#: blog/views/app.py:38
+#: blog/views/app.py:46
 msgid "Viens %(animal)s, mais avant %s(suj) doit prendre mon %(objet)s"
 msgstr "Come %(animal)s, before I have to take my %(objet)s"
 
-#: blog/views/app.py:40
+#: blog/views/app.py:47
 msgid "je"
 msgstr "I"
 

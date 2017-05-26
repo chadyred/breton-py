@@ -30,7 +30,7 @@ class FifoNode(template.Node):
     def generateListNumber(self):
       list = []
 
-      for i in xrange(self.min,self.max):
+      for i in range(self.min,self.max): # En PYTHON 3, on remplace par "range" plus performant.
         list.append(str(i))
 
       return list

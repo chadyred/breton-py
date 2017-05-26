@@ -1,3 +1,6 @@
+{% extends "blog/base_blog.html" %}
+{% block content %}
+
 <p>
   Bonjours {{ hello }} !<br />
   {{ chaine }}
@@ -5,3 +8,10 @@
 <p>
   {{ ip }} {{ petit }}, {{ chien }}
 </p>
+<p>
+	{{ petit }} => {{ action }}
+	<br>
+	{{ chat }}
+</p>
+
+{% endblock %}

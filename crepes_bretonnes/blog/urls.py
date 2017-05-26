@@ -19,6 +19,5 @@ urlpatterns = [
     url(r'^article/(?P<pk>\d+)/show/$', views.ArticleDetailView.as_view(), name="article_show_view"),
     url(r'^article/(?P<id>\d+)/delete/$', views.deleteArticle, name="article_delete"),
     url(r'^commentaire/article/(?P<id>\d+)/ajouter/$', views.comment_article, name="comment_article"),
-    url(r'^test-i18n$', views.test_i18n, name="test_i18n"),
-    url(r'^i18n/', include('django.conf.urls.i18n'))
+    url(r'^test-i18n$', views.test_i18n, name="test_i18n")
 ]

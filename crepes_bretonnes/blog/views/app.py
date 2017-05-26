@@ -2,7 +2,7 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext as _
-
+from django.utils.translation import ungettext, pgettext
 
 def home(request):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
@@ -17,6 +17,14 @@ def accueil(request):
               <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>"""
 
     return render(request, 'blog/accueil.html', locals())
+
+
+def language(request):
+    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
+    text = """<h1>Bienvenue sur mon blog !</h1>
+              <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>"""
+
+    return render(request, 'app/language.html', locals())
 
 def test_i18n(request):
 	nb_chat = 2
@@ -35,9 +43,8 @@ def test_i18n(request):
 	crocodile = pgettext("Crocodile de compagnie dans la famille pirate","sac-à-main")
 	sac = pgettext("Sac pour transporter des affaires","sac-à-main")
 
-	action = _("Viens %(animal)s, mais avant %s(suj) doit prendre mon %(objet)s") %
-			{
-				'suj' : _('je')
+	action = _("Viens %(animal)s, mais avant %s(suj) doit prendre mon %(objet)s") % {
+				'suj' : _('je'),
 				'objet' : sac,
 				'animal' : crocodile
 			}
