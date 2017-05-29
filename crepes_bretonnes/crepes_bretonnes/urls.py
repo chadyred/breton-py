@@ -16,7 +16,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^newletter$', TemplateView.as_view(template_name='blog/staticView.html')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^language$', blog_views.language, name="languages")
+    url(r'^language$', blog_views.language, name="languages"),
+    url(r'^pages/', include('django.contrib.flatpages.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
